@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Baskin Robbins ForecastOS</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div>
+          <p class="eyebrow">Baskin Robbins India</p>
+          <h1>ForecastOS</h1>
+          <p class="sidebar-copy">
+            Forecast-first control tower for SKU, store, channel, and hourly planning.
+          </p>
+        </div>
+
+        <section class="sidebar-block">
+          <h2>Planning Filters</h2>
+          <label>
+            City cluster
+            <select id="cityCluster">
+              <option value="mumbai">Mumbai Metro</option>
+              <option value="bengaluru">Bengaluru Delivery Hub</option>
+              <option value="delhi">Delhi NCR Family Cluster</option>
+            </select>
+          </label>
+
+          <label>
+            Store
+            <select id="storeSelect"></select>
+          </label>
+
+          <label>
+            Forecast horizon
+            <select id="forecastHorizon">
+              <option value="hourly">Intraday hourly</option>
+              <option value="daily" selected>Daily</option>
+              <option value="weekly">Weekly</option>
+            </select>
+          </label>
+
+          <label>
+            Weather temperature
+            <input id="temperature" type="range" min="20" max="45" value="34" />
+            <span class="hint" id="temperatureValue">34°C</span>
+          </label>
+
+          <label>
+            Rain / disruption
+            <input id="rainfall" type="range" min="0" max="100" value="15" />
+            <span class="hint" id="rainfallValue">15 / 100</span>
+          </label>
+
+          <label>
+            Promo intensity
+            <input id="promoIntensity" type="range" min="0" max="100" value="45" />
+            <span class="hint" id="promoValue">45 / 100</span>
+          </label>
+
+          <label>
+            Delivery demand share
+            <input id="deliveryShare" type="range" min="5" max="70" value="32" />
+            <span class="hint" id="deliveryValue">32%</span>
+          </label>
+
+          <label>
+            Event type
+            <select id="eventType">
+              <option value="none">No event</option>
+              <option value="weekend">Weekend spike</option>
+              <option value="festival">Festival / holiday</option>
+              <option value="mall">Mall event / movie rush</option>
+            </select>
+          </label>
+
+          <label>
+            Supply condition
+            <select id="supplyStatus">
+              <option value="normal">Normal</option>
+              <option value="milk">Milk base delay</option>
+              <option value="freezer">Freezer capacity tight</option>
+              <option value="packaging">Packaging short</option>
+            </select>
+          </label>
+        </section>
+
+        <section class="sidebar-block">
+          <h2>AI Questions</h2>
+          <ul class="clean-list" id="aiQuestions"></ul>
+        </section>
+      </aside>
+
+      <main class="main">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Demand Forecasting Tool</p>
+            <h2 id="toplineStore">Baskin Robbins Store Forecast</h2>
+            <p class="topline-copy">
+              Predict demand, prevent stockouts, and turn forecast changes into actions.
+            </p>
+          </div>
+          <div class="headline-metrics">
+            <article class="metric-card">
+              <span>Forecast demand</span>
+              <strong id="headlineDemand">0</strong>
+            </article>
+            <article class="metric-card">
+              <span>Forecast accuracy</span>
+              <strong id="headlineAccuracy">0%</strong>
+            </article>
+            <article class="metric-card">
+              <span>Projected service level</span>
+              <strong id="headlineService">0%</strong>
+            </article>
+            <article class="metric-card">
+              <span>Projected spoilage</span>
+              <strong id="headlineSpoilage">0%</strong>
+            </article>
+          </div>
+        </header>
+
+        <section class="workspace-grid">
+          <section class="panel">
+            <div class="panel-head">
+              <div>
+                <p class="eyebrow">Exception Queue</p>
+                <h3>What needs action now</h3>
+              </div>
+              <span class="badge" id="exceptionCount">0 critical items</span>
+            </div>
+            <div id="exceptionQueue" class="exception-list"></div>
+          </section>
+
+          <section class="panel">
+            <div class="panel-head">
+              <div>
+                <p class="eyebrow">ML Forecast Engine</p>
+                <h3>Drivers behind the number</h3>
+              </div>
+            </div>
+            <div class="driver-grid">
+              <article class="driver-card">
+                <span>Base demand</span>
+                <strong id="baseDemand">0</strong>
+              </article>
+              <article class="driver-card">
+                <span>Weather effect</span>
+                <strong id="weatherImpact">0</strong>
+              </article>
+              <article class="driver-card">
+                <span>Promo effect</span>
+                <strong id="promoImpact">0</strong>
+              </article>
+              <article class="driver-card">
+                <span>Channel shift</span>
+                <strong id="channelImpact">0</strong>
+              </article>
+            </div>
+            <div class="explanation-box" id="forecastNarrative"></div>
+            <div class="ml-strip">
+              <div><span>Model</span><strong id="modelName">Gradient Boosted Ensemble</strong></div>
+              <div><span>Feature count</span><strong id="featureCount">0</strong></div>
+              <div><span>31-SKU avg confidence</span><strong id="avgSkuConfidence">0%</strong></div>
+            </div>
+          </section>
+        </section>
+
+        <section class="workspace-grid lower">
+          <section class="panel wide">
+            <div class="panel-head">
+              <div>
+                <p class="eyebrow">SKU Forecast Table</p>
+                <h3>Daily product forecast and inventory action</h3>
+              </div>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>SKU</th>
+                    <th>Type</th>
+                    <th>Forecast units</th>
+                    <th>Current stock</th>
+                    <th>Cover</th>
+                    <th>ML confidence</th>
+                    <th>Top driver</th>
+                    <th>Risk</th>
+                    <th>Recommended action</th>
+                  </tr>
+                </thead>
+                <tbody id="skuTable"></tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="panel">
+            <div class="panel-head">
+              <div>
+                <p class="eyebrow">Hour-Level Planning</p>
+                <h3>Intraday forecast</h3>
+              </div>
+            </div>
+            <div id="hourlyBars" class="hourly-bars"></div>
+          </section>
+        </section>
+
+        <section class="workspace-grid lower">
+          <section class="panel">
+            <div class="panel-head">
+              <div>
+                <p class="eyebrow">Replenishment + Production</p>
+                <h3>Recommended decisions</h3>
+              </div>
+            </div>
+            <ul class="clean-list" id="decisionList"></ul>
+          </section>
+
+          <section class="panel">
+            <div class="panel-head">
+              <div>
+                <p class="eyebrow">AI Copilot</p>
+                <h3>Manager summary</h3>
+              </div>
+            </div>
+            <div class="chat-box" id="copilotSummary"></div>
+          </section>
+        </section>
+      </main>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
