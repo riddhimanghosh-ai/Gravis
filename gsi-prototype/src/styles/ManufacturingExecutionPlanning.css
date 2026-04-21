@@ -1,0 +1,301 @@
+/* Manufacturing Execution Planning Styles */
+
+.manufacturing-execution-planning {
+  padding: 20px;
+  background: #f5f5f5;
+  min-height: 100vh;
+}
+
+.manufacturing-execution-planning header {
+  margin-bottom: 30px;
+}
+
+.manufacturing-execution-planning h1 {
+  margin: 0 0 8px 0;
+  font-size: 28px;
+  font-weight: 700;
+  color: #1f1f1f;
+}
+
+.manufacturing-execution-planning > p {
+  margin: 0;
+  color: #666;
+  font-size: 14px;
+}
+
+/* Metrics Grid */
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.metrics-grid > div {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.metrics-grid h3 {
+  margin: 0 0 10px 0;
+  font-size: 12px;
+  color: #999;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.metrics-grid .value {
+  font-size: 28px;
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.metrics-grid .subtitle {
+  font-size: 12px;
+  color: #666;
+  margin-top: 8px;
+}
+
+/* View Selection Buttons */
+.view-selection {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.view-selection button {
+  padding: 10px 16px;
+  background: white;
+  color: #666;
+  border: 2px solid #e0e0e0;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 13px;
+  transition: all 0.2s ease;
+}
+
+.view-selection button:hover {
+  border-color: #1F77B4;
+  color: #1F77B4;
+}
+
+.view-selection button.active {
+  background: #1F77B4;
+  color: white;
+  border-color: #1F77B4;
+}
+
+/* View Containers */
+.view-container {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.view-container h2 {
+  margin: 0 0 8px 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: #1f1f1f;
+}
+
+.view-container > p {
+  margin: 0 0 20px 0;
+  color: #666;
+  font-size: 13px;
+}
+
+/* Tables */
+.view-container table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+
+.view-container th {
+  padding: 10px;
+  text-align: left;
+  font-weight: 700;
+  border-right: 1px solid #e0e0e0;
+  border-bottom: 2px solid #e0e0e0;
+  background: #f9f9f9;
+}
+
+.view-container td {
+  padding: 8px 10px;
+  border-right: 1px solid #e0e0e0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.view-container tr:nth-child(odd) {
+  background: #fafafa;
+}
+
+.view-container tr:nth-child(even) {
+  background: white;
+}
+
+/* Status Badges */
+.status-badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.status-badge.ok {
+  background: #E8F5E9;
+  color: #2E7D32;
+}
+
+.status-badge.warning {
+  background: #FFEBEE;
+  color: #C62828;
+}
+
+.status-badge.low {
+  background: #FFF3E0;
+  color: #E65100;
+}
+
+/* Insight Boxes */
+.insight-box {
+  background: #f9f9f9;
+  padding: 15px;
+  border-radius: 6px;
+  border-left: 4px solid #1F77B4;
+  margin-top: 20px;
+}
+
+.insight-box strong {
+  color: #1f1f1f;
+}
+
+.insight-box ul {
+  margin-left: 20px;
+  margin-top: 10px;
+  font-size: 13px;
+  color: #666;
+  line-height: 1.8;
+}
+
+.insight-box li {
+  margin-bottom: 8px;
+}
+
+/* Line Capacity Cards */
+.line-capacity-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 20px;
+}
+
+.line-card {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 15px;
+  background: #f9f9f9;
+}
+
+.line-card h3 {
+  margin: 0 0 15px 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: #1f1f1f;
+}
+
+.line-card .line-info {
+  margin-bottom: 15px;
+}
+
+.line-card .info-row {
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 5px;
+  line-height: 1.6;
+}
+
+.line-card .info-row strong {
+  color: #1f1f1f;
+}
+
+.line-card .sku-list {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.line-card .sku-badge {
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  background: #e0e0e0;
+  color: #666;
+}
+
+.line-card .sku-badge.active {
+  background: #1F77B4;
+  color: white;
+}
+
+.line-card .changeover-section {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #e0e0e0;
+  font-size: 12px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .metrics-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+
+  .view-selection {
+    flex-direction: column;
+  }
+
+  .view-selection button {
+    width: 100%;
+  }
+
+  .line-capacity-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .view-container {
+    padding: 15px;
+  }
+
+  .view-container table {
+    font-size: 11px;
+  }
+
+  .view-container th,
+  .view-container td {
+    padding: 6px 8px;
+  }
+
+  .metrics-grid > div {
+    padding: 15px;
+  }
+
+  .metrics-grid .value {
+    font-size: 20px;
+  }
+}
